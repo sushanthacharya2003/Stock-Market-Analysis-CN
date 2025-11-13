@@ -1,0 +1,77 @@
+/* BASIC RESET */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    width: 100%;
+    min-height: 100vh;
+    background-color: lightgreen; /* temporary */
+}
+
+/* HEADER */
+h1 {
+    background-color: burlywood;
+    color: white;
+    text-align: center;
+    margin: 0;
+    padding: 20px 0;
+}
+
+/* TOP SECTION: chart (left) + list (right) */
+.top-section {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    padding: 20px;
+    background-color: cadetblue; /* temporary */
+}
+
+/* CHART SECTION */
+.chart-section {
+    flex: 3;
+    background-color: chocolate; /* temporary */
+    padding: 20px;
+    border-radius: 10px;
+    min-height: 400px;
+}
+
+.chart-section canvas {
+    width: 100%;
+    height: 300px;
+}
+
+/* Range buttons under chart */
+.range-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: rebeccapurple; /* temporary */
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.range-buttons button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+/* STOCK LIST SECTION */
+.list-section {
+    flex: 1;
+    background-color: darkcyan; /* temporary */
+    padding: 20px;
+    border-radius: 10px;
+    min-height: 400px;
+    overflow-y: auto;
+}
+
+/* DETAIL SECTION (BOTTOM) */
+.detail-section {
+    background-color: bisque; /* temporary */
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    min-height: 200px;
+}

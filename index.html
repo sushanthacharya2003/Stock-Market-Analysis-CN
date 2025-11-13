@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Market Analysis</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <h1>Stock Market Analysis</h1>
+
+    <!-- Main container: chart (left) + list (right) -->
+    <div class="top-section">
+
+        <!-- Chart section -->
+        <div class="chart-section">
+            <canvas id="stockChart"></canvas>
+
+            <!-- Range buttons -->
+            <div class="range-buttons">
+                <button data-range="1M">1 Month</button>
+                <button data-range="3M">3 Month</button>
+                <button data-range="1Y">1 Year</button>
+                <button data-range="5Y">5 Years</button>
+            </div>
+        </div>
+
+        <!-- List section -->
+        <div class="list-section" id="stockList">
+            <!-- JS will insert stock items here -->
+        </div>
+
+    </div>
+
+    <!-- Bottom detail section -->
+    <div class="detail-section" id="stockDetails">
+        <!-- JS will insert the description and info here -->
+    </div>
+
+    <!-- Main controller script -->
+    <script src="app.js"></script>
+
+    <!-- Components -->
+    <script src="components/chart.js"></script>
+    <script src="components/list.js"></script>
+    <script src="components/detail.js"></script>
+
+    <!-- API -->
+    <script src="api/chartApi.js"></script>
+    <script src="api/listApi.js"></script>
+    <script src="api/detailApi.js"></script>
+
+</body>
+</html>

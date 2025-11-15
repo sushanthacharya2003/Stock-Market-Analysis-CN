@@ -1,86 +1,85 @@
-/* BASIC RESET */
-body {
+/* ---------------------- */
+/*       GLOBAL STYLE      */
+/* ---------------------- */
+
+* {
     margin: 0;
     padding: 0;
-    font-family: sans-serif;
-    width: 100%;
-    min-height: 100vh;
-    background-color: lightgreen; /* temporary */
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
 }
 
-/* HEADER */
+body {
+    background: #f5f7fa;
+    min-height: 100vh;
+    color: #333;
+}
+
+/* ---------------------- */
+/*         HEADER         */
+/* ---------------------- */
+
 h1 {
-    background-color: burlywood;
+    background: #008aff;
     color: white;
     text-align: center;
-    margin: 0;
-    padding: 20px 0;
+    padding: 18px 0;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 15px;
 }
 
-/* TOP SECTION: chart (left) + list (right) */
+/* ---------------------- */
+/*    MAIN TOP LAYOUT     */
+/* ---------------------- */
+
 .top-section {
     display: flex;
-    flex-direction: row;
     gap: 20px;
-    padding: 20px;
-    height: 400px;
-    background-color: cadetblue; /* temporary */
+    padding: 0 20px;
+    height: 420px;
 }
 
-/* list section */
-.list-section {
-    flex: 1;
-    overflow-y: auto;
-}
+/* ---------------------- */
+/*      CARD WRAPPERS     */
+/* ---------------------- */
+
 .chart-section,
 .list-section,
 .detail-section {
     background: white;
     border-radius: 10px;
-    padding: 15px;
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    padding: 16px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
-/* CHART SECTION */
+/* ---------------------- */
+/*     CHART SECTION       */
+/* ---------------------- */
+
 .chart-section {
     flex: 3;
-    background-color: chocolate; /* temporary */
-    padding: 20px;
-    border-radius: 10px;
-    min-height: 400px;
+    display: flex;
+    flex-direction: column;
 }
 
-.chart-section canvas {
+#stockChart {
     width: 100%;
-    height: 300px;
+    height: 310px !important;
 }
 
-/* Range buttons under chart */
-.range-buttons {
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-evenly;
-    background-color: white; /* temporary */
-    padding: 10px;
-    border-radius: 10px;
-}
-
-.range-buttons button {
-    padding: 10px 20px;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-}
+/* Range Button Container */
 .range-buttons {
     display: flex;
-    gap: 10px;
-    margin-top: 10px;
+    gap: 12px;
+    margin-top: 16px;
 }
 
+/* Zerodha-style buttons */
 .range-buttons button {
     background: none;
     border: none;
-    padding: 5px 10px;
+    padding: 6px 10px;
     font-size: 14px;
     color: #666;
     cursor: pointer;
@@ -91,9 +90,9 @@ h1 {
     color: #008aff;
 }
 
-/* active button (Zerodha style) */
+/* Active range button */
 .range-buttons button.active {
-    color: #008aff; /* Zerodha blue */
+    color: #008aff;
     font-weight: 500;
 }
 
@@ -108,33 +107,63 @@ h1 {
     border-radius: 2px;
 }
 
-/* STOCK LIST SECTION */
+/* ---------------------- */
+/*      STOCK LIST        */
+/* ---------------------- */
+
 .list-section {
     flex: 1;
-    background-color: darkcyan; /* temporary */
-    padding: 20px;
-    border-radius: 10px;
-    min-height: 400px;
     overflow-y: auto;
 }
 
-/* DETAIL SECTION (BOTTOM) */
+.list-section ul {
+    list-style: none;
+}
+
+.stock-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 8px;
+    background: #f9fafb;
+    border: 1px solid #edf1f5;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.stock-item:hover {
+    background: #eef7ff;
+    border-color: #c7e4ff;
+}
+
+.stock-item.active {
+    background: #e7f3ff;
+    border-color: #008aff;
+}
+
+.stock-item span {
+    font-size: 13px;
+}
+
+/* ---------------------- */
+/*     DETAIL SECTION     */
+/* ---------------------- */
+
 .detail-section {
-    background-color: bisque; /* temporary */
     margin: 20px;
     padding: 20px;
-    border-radius: 10px;
-    min-height: 200px;
+    min-height: 220px;
 }
 
-/*chart section*/
-.chart-section {
-    flex: 2;
-    padding: 10px;
+.detail-section h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
 }
 
-#stockChart {
-    width: 100%;
-    height: 300px !important; /* <-- fixes the huge chart */
+.detail-section p {
+    line-height: 1.5;
+    color: #444;
 }
-

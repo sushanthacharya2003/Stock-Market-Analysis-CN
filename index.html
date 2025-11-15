@@ -39,17 +39,14 @@
     </div>
 
     <!-- Main controller script -->
-    <script src="app.js"></script>
+    <script type="module" src="app.js"></script>
 
-    <!-- Components -->
-    <script src="components/chart.js"></script>
-    <script src="components/list.js"></script>
-    <script src="components/detail.js"></script>
+    <!-- Chart.js CDN (adds global Chart) -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <!-- API -->
-    <script src="api/chartApi.js"></script>
-    <script src="api/listApi.js"></script>
-    <script src="api/detailApi.js"></script>
+    <!-- Your main app entry point as a module -->
+    <script type="module" src="./app.js"></script>
 
 </body>
 </html>
+

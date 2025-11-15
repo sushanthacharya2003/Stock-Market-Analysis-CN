@@ -4,17 +4,21 @@ import { renderStockDetails } from "./components/detail.js";
 
 // importing API functions
 import { getChartData } from "./api/chartApi.js";
-import { getBookData } from "./api/detailsApi.js";
-import { getProfileData } from "./api/detailsApi.js";  // if you split them
+import { getBookData } from "./api/statsApi.js";
 import { getStockList } from "./api/statsApi.js";
+import { getStockSummary } from "./api/stockSummaryApi.js";  // if you split them
 
 let currentSymbol = null;
 let currentRange = "1mo";
 
 async function initApp() {
-    await loadStockList();
     initChart();
+    await loadStockList();
     bindEvents();
+    loadStockList();
+    loadStock();
+    setupRangeButtons();
+
 }
 
 async function loadStockList() {

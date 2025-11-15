@@ -1,16 +1,17 @@
-export async function getBookData(symbol) {
-    const res = await fetch("https://stock-market-api-k9vl.onrender.com/api/stocksstatsdata");
+export async function getProfileData(symbol) {
+    const res = await fetch("https://stock-market-api-k9vl.onrender.com/api/profiledata");
     const data = await res.json();
 
-    const allDetails = data.stocksStatsData[0];
+    const allProfiles = data.stocksProfileData[0];
 
-    const stock = allDetails[symbol];
+    const stock = allProfiles[symbol];
     if (!stock) {
-        console.error("Symbol not found:", symbol);
+        console.error("Profile not found for:", symbol);
         return null;
     }
 
-    const { bookValue, profit } = stock;
+    const { summary } = stock;
 
-    return { bookValue, profit };
+    return { summary };
 }
+

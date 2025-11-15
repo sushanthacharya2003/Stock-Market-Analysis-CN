@@ -35,3 +35,18 @@ fetchStockHistory(symbol, range);
 
 The boss. It coordinates everything.
 
+Steps:
+list API ✔
+
+stats API ✔
+
+summary API ✔
+
+chart API ✔
+
+list.js ✔
+
+loadStock() ✔
+
+app.js skeleton ✔
+

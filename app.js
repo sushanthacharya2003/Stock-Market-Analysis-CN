@@ -1,82 +1,82 @@
-import { initChart, updateChart, bindRangeButtons } from "./components/chart.js";
+import { initChart, updateChart } from "./components/chart.js";
 import { renderStockList, highlightStock } from "./components/list.js";
 import { renderStockDetails } from "./components/detail.js";
 
-// importing API functions
 import { getChartData } from "./api/chartApi.js";
-import { getBookData } from "./api/statsApi.js";
-import { getStockList } from "./api/statsApi.js";
-import { getStockSummary } from "./api/stockSummaryApi.js";  // if you split them
+import { getBookData, getStockList } from "./api/statsApi.js";
+import { getStockSummary } from "./api/stockSummaryApi.js";
 
 let currentSymbol = null;
 let currentRange = "1mo";
 
+// -------- INIT APP --------
 async function initApp() {
     initChart();
     await loadStockList();
-    bindEvents();
-    loadStockList();
-    loadStock();
     setupRangeButtons();
-
 }
 
+initApp();
+
+// -------- LOAD STOCK LIST --------
 async function loadStockList() {
-    const list=await getStockList();
-    const symbols=Object.keys(list);
-    renderStockList(symbols,(symbol)=>{
-    currentSymbol = symbol;
-    highlightStock(symbol);
-    loadStock(symbol);
-    });
-    currentSymbol = symbols[0]
-    highlightStock(currentSymbol)
-    loadStock(currentSymbol)
+    const listData = await getStockList();     // full object with BV + profit
+    const symbols = Object.keys(listData);     // convert to ["AAPL","MSFT"]
 
-}
-
-//range_buttons
-
-// Select all range buttons INSIDE the range-buttons container
-const rangeButtons = document.querySelectorAll(".range-buttons button");
-
-function setupRangeButtons() {
-    rangeButtons.forEach(btn => {
-        btn.addEventListener("click", () => {
-
-            // update the global range
-            currentRange = btn.dataset.range;
-
-            // reload chart for the currently selected stock
-            loadStock(currentSymbol);
-
-            // highlight the current button
-            highlightRangeButton(btn);
-        });
-    });
-}
-
-function highlightRangeButton(activeBtn) {
-    rangeButtons.forEach(btn => {
-        btn.classList.remove("active");      // remove active state
+    // render list with details
+    renderStockList(symbols, listData, (symbol) => {
+        currentSymbol = symbol;
+        highlightStock(symbol);
+        loadStock(symbol);
     });
 
-    activeBtn.classList.add("active");       // add active to clicked button
+    // auto-select the first stock
+    currentSymbol = symbols[0];
+    highlightStock(currentSymbol);
+    loadStock(currentSymbol);
 }
 
+// -------- LOAD SINGLE STOCK (chart + summary) --------
 async function loadStock(symbol) {
-    const chartData=await getChartData(symbol,currentRange);
-    const updatedChart=await updateChart(chartData);
-    const bookData=await getBookData(symbol);
-    const profileData=await getProfileData(symbol);
-    const stockData={...bookData,...profileData};
+    if (!symbol) return;
+
+    const chartData = await getChartData(symbol, currentRange);
+    updateChart(chartData);
+
+    const bookData = await getBookData(symbol);
+    const profileData = await getStockSummary(symbol);
+
+    const stockData = {
+        ...bookData,
+        ...profileData
+    };
+
     renderStockDetails(stockData);
 }
 
-function bindEvents() {
-    // will fill later
+// -------- RANGE BUTTONS --------
+function setupRangeButtons() {
+    const buttons = document.querySelectorAll(".range-buttons button");
+
+    if (!buttons.length) return;
+
+    buttons.forEach(btn => {
+        btn.addEventListener("click", () => {
+            currentRange = btn.dataset.range;
+            loadStock(currentSymbol);
+            highlightRangeButton(btn);
+        });
+    });
+
+    // optionally: set first range as active by default
+    highlightRangeButton(buttons[0]);
 }
 
-// start the app
-initApp();
+function highlightRangeButton(activeBtn) {
+    const buttons = document.querySelectorAll(".range-buttons button");
+    buttons.forEach(btn => btn.classList.remove("active"));
+    if (activeBtn) {
+        activeBtn.classList.add("active");
+    }
+}
 

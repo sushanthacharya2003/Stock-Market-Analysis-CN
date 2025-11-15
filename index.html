@@ -18,18 +18,18 @@
             <canvas id="stockChart"></canvas>
 
             <!-- Range buttons -->
-            <div class="range-buttons">
-                <button data-range="1M">1 Month</button>
-                <button data-range="3M">3 Month</button>
-                <button data-range="1Y">1 Year</button>
-                <button data-range="5Y">5 Years</button>
-            </div>
+            <button data-range="1mo">1 Month</button>
+            <button data-range="3mo">3 Month</button>
+            <button data-range="1y">1 Year</button>
+            <button data-range="5y">5 Years</button>
+
         </div>
 
         <!-- List section -->
-        <div class="list-section" id="stockList">
-            <!-- JS will insert stock items here -->
+        <div class="list-section stockList">
+            <ul></ul>
         </div>
+
 
     </div>
 
@@ -39,7 +39,6 @@
     </div>
 
     <!-- Main controller script -->
-    <script type="module" src="app.js"></script>
 
     <!-- Chart.js CDN (adds global Chart) -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

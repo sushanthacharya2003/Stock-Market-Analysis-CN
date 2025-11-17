@@ -1,4 +1,4 @@
-CHECKOUT - https://zyp383.csb.app/
+live preview - https://zyp383.csb.app/
 DEMO VIDEO - https://shorturl.at/kffe3
 ---
 
@@ -8,6 +8,9 @@ DEMO VIDEO - https://shorturl.at/kffe3
 # Stock-Market-Analysis-CN
 
 A dynamic web app for fetching, visualizing and analysing real-time stock market data. Built with modern JavaScript (frontend + backend) for hands-on learning and practical insights.
+screenshots
+<img width="1213" height="504" alt="image" src="https://github.com/user-attachments/assets/97d7c398-478a-42b7-be0c-a8a99ad64958" />
+
 
 ## 🚀 Features
 - Fetches live stock data via API (Node.js backend).  
